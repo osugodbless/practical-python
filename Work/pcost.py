@@ -1,13 +1,15 @@
 # Exercise 1.27
+import csv
+import sys
 
 def portfolio_cost(filename):
     data = []
 
     with open(filename, "rt") as file:
-        header = next(file).strip("\n").split(",")
+        rows = csv.reader(file)
+        header = next(rows)
         
-        for line in file:
-            row = line.strip("\n").split(",")
+        for row in rows:
             data.append(row)
 
     overall_cost_of_shares = 0
@@ -18,4 +20,8 @@ def portfolio_cost(filename):
         
     print(f"Total cost {overall_cost_of_shares}")
 
-portfolio_cost("Work/Data/portfoio.csv")
+if len(sys.argv) == 2:
+    filename = sys.argv[1]
+# else:
+#     filename = "Work/Data/portfolio.csv"
+portfolio_cost(filename)
