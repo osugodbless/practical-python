@@ -1,12 +1,22 @@
-import csv
-prices = {} # Initial empty dict
+from collections import Counter, defaultdict
 
-with open('Work/Data/prices.csv', 'rt') as file:
-    f = csv.reader(file)
-    for line in f:
-        # row = line.split(',')
-        if len(line) < 2:
-            continue
-        prices[line[0]] = float(line[1])
+portfolio = [
+    ('GOOG', 100, 490.1),
+    ('IBM', 50, 91.1),
+    ('CAT', 150, 83.44),
+    ('IBM', 100, 45.23),
+    ('GOOG', 75, 572.45),
+    ('AA', 50, 23.15)
+]
 
-print(prices)
+total_shares = Counter()
+for name, shares, price in portfolio:
+    total_shares[name] += shares
+
+print(total_shares.most_common(3))
+
+holdings = defaultdict(list)
+for name, shares, price in portfolio:
+    holdings[name].append((shares, price))
+
+print(holdings)
