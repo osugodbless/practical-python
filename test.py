@@ -1,22 +1,25 @@
-from collections import Counter, defaultdict
+# from collections import Counter, defaultdict
 
-portfolio = [
-    ('GOOG', 100, 490.1),
-    ('IBM', 50, 91.1),
-    ('CAT', 150, 83.44),
-    ('IBM', 100, 45.23),
-    ('GOOG', 75, 572.45),
-    ('AA', 50, 23.15)
-]
+# portfolio = [
+#     ('GOOG', 100, 490.1),
+#     ('IBM', 50, 91.1),
+#     ('CAT', 150, 83.44),
+#     ('IBM', 100, 45.23),
+#     ('GOOG', 75, 572.45),
+#     ('AA', 50, 23.15)
+# ]
 
-total_shares = Counter()
-for name, shares, price in portfolio:
-    total_shares[name] += shares
+# total_shares = Counter()
+# for name, shares, price in portfolio:
+#     total_shares[name] += shares
 
-print(total_shares.most_common(3))
+# print(total_shares.most_common(3))
 
-holdings = defaultdict(list)
-for name, shares, price in portfolio:
-    holdings[name].append((shares, price))
+# holdings = defaultdict(list)
+# for name, shares, price in portfolio:
+#     holdings[name].append((shAares, price))
 
-print(holdings)
+# print(holdings)
+a = [1,2,3,4,5,6]
+b = sum([x for x in a ])
+print(b)

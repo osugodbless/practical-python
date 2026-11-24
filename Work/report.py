@@ -1,5 +1,6 @@
 import csv
 from pprint import pprint
+from typing import Any
 
 filename = 'Work/Data/portfolio.csv'
 
@@ -20,7 +21,7 @@ def read_portfolio_tuple(filename) -> list[tuple[str, int, float]]:
 
 
 # Exercise 2.5
-def read_portfolio_dict(filename) -> list[tuple[str, int, float]]:
+def read_portfolio_dict(filename) -> list[dict[str, Any]]:
     portfolio_ls = []
 
     with open(filename, 'rt') as file:
@@ -30,7 +31,7 @@ def read_portfolio_dict(filename) -> list[tuple[str, int, float]]:
             if len(line) != 3:
                 continue
 
-            portfolio_dict = {}
+            portfolio_dict: dict[str, Any] = {}
             portfolio_dict[headers[0]] = line[0]
             portfolio_dict[headers[1]] = int(line[1])
             portfolio_dict[headers[2]] = float(line[2])
@@ -50,4 +51,10 @@ def read_prices(filename) -> dict:
 
     return prices
 
-pprint(read_portfolio_dict(filename))
+
+
+portfolio = read_portfolio_dict(filename)
+cost = sum([ p['shares'] * p['price'] for p in portfolio ])
+
+port_tuple = [ p for p in portfolio ]
+pprint(port_tuple)
